@@ -1,9 +1,8 @@
-// redux/contactsOps.js
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // Задай базовий URL MockAPI
-axios.defaults.baseURL = 'https://67c2d2391851890165ad57df.mockapi.io';
+axios.defaults.baseURL = 'https://connections-api.goit.global/';
 
 // Отримання контактів
 export const fetchContacts = createAsyncThunk(

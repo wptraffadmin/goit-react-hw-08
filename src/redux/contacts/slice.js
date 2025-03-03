@@ -1,6 +1,7 @@
 // redux/contactsSlice.js
 import { createSlice, createSelector } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './contactsOps';
+import { fetchContacts, addContact, deleteContact } from './operations';
+import { logout } from '../auth/operations';
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -51,6 +52,13 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, (state, action) => {
         state.deletingIds = state.deletingIds.filter(id => id !== action.meta.arg); // Прибираємо ID при помилці
         state.error = action.payload;
+      })
+      .addCase(logout.fulfilled, state => {
+        state.items = []; // Очищення контактів при логауті
+        state.isFetching = false;
+        state.isAdding = false;
+        state.deletingIds = [];
+        state.error = null;
       });
   },
 });
@@ -65,8 +73,7 @@ export const selectError = state => state.contacts.error;
 export const selectFilteredContacts = createSelector(
   [selectContacts, state => state.filters.name],
   (contacts, filter) =>
-    contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
+    contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase())
     )
 );
 

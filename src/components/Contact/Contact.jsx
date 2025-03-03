@@ -1,8 +1,8 @@
 // components/Contact/Contact.jsx
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from '../../redux/contactsOps';
-import { selectDeletingIds } from '../../redux/contactsSlice'; // Оновлений селектор
+import { deleteContact } from '../../redux/contacts/operations';
+import { selectDeletingIds } from '../../redux/contacts/slice'; // Оновлений селектор
 import Phone from '../../assets/phone.svg';
 import User from '../../assets/user.svg';
 import styles from './Contact.module.css';

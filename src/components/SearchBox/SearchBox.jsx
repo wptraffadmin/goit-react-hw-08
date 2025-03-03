@@ -1,7 +1,7 @@
 // components/SearchBox.jsx
 import { useSelector, useDispatch } from 'react-redux';
-import { setFilter } from '../../redux/filtersSlice'; // Оновлений екшен
-import { selectNameFilter } from '../../redux/filtersSlice'; // Селектор для фільтру
+import { setFilter } from '../../redux/filters/slice'; // Оновлений екшен
+import { selectNameFilter } from '../../redux/filters/slice'; // Селектор для фільтру
 import styles from './SearchBox.module.css';
 
 const SearchBox = () => {
